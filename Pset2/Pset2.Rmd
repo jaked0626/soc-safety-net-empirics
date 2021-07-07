@@ -1,0 +1,356 @@
+---
+title: "Homework 2"
+subtitle: "ECON 24450 Spring, 2021"
+author: "Jake Underland"
+date: "`r Sys.Date()`"
+header-includes:
+   - \usepackage{amsmath}
+   - \usepackage{dcolumn}
+   - \usepackage{rotating}
+output:
+  pdf_document: 
+    latex_engine: xelatex
+    toc: true
+    extra_dependencies: ["amsmath", "dcolumn", "rotating"]
+    keep_tex: true
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: yes
+  word_document:
+    toc: false
+    toc_depth: '3'
+---
+</style>
+
+<style type="text/css">
+
+body, td {
+   font-size: 20px;
+}
+
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE)
+```
+
+\newcommand{\argmax}{\mathop{\mathrm{argmax}}}
+
+# 1. Labor Supply Theory.  
+  
+Using the lecture notes as a guide, show that 1) an increase in the wage has an ambiguous effect on labor supply and 2) a traditional welfare program unambiguously reduces labor supply.  
+  
+\textit{Solution.}  
+  
+\begin{enumerate}  
+\item[1)]  
+
+The uncompensated utility maximization problem: 
+\[\begin{aligned}
+\max_{x, l} u(x, l) \; \textit{ s.t. } \;px \leq y + w(T-l)
+\end{aligned}\]
+
+where $x$ is amount of goods consumed, $l$ is time spent on leisure, $T$ is total time, and $y$ is non-labor income.  
+Solving the above,
+\[\begin{aligned}
+\max_{x, l} \mathcal{L} &= u(x, l) + \lambda [y + w(T-l) -px] \\
+&[x]:\;u_x(x^*,l^*) - \lambda p = 0 \\
+&[l]:\;u_l(x^*,l^*) - \lambda w = 0 \\
+&[y]:\;y + w(T-l^*) -px^* = 0
+\end{aligned}\]
+
+In the optimal state, define 
+\[\begin{aligned}
+x^* &\equiv x^u(p,w,y)\\
+l^* &\equiv l^u(p,w,y)\\
+\lambda^* &\equiv \lambda(p,w,y)\\
+h^u &\equiv T - l^* \dots \textit{(The uncompensated labor demand/supply)}\\
+\epsilon_{h^u, w} &\equiv \frac{\partial h^u / h^u}{\partial w / w} = 
+\frac{\partial h^u}{\partial w} \cdot \frac{w}{h^u} \textit{(The uncompensated labor demand/supply elasticity)}
+\end{aligned}\]  
+Now, we look at the dual expenditure minimization problem. 
+\[\begin{aligned}
+\min_{x, l} px + wl \; \textit{ s.t. } \;u(x, l) \geq \bar{u}
+\end{aligned}\]
+\[\begin{aligned}
+\min_{x, l}\mathcal{L} &= px + wl  + \lambda [\bar{u}-u(x, l) ]\\
+&[x]:\; p - \lambda u_x(x^*,l^*) = 0 \\
+&[l]:\; w - \lambda u_l(x^*,l^*) = 0 \\
+&[y]:\; \bar{u} - u(x^*, l^*) = 0
+\end{aligned}\]  
+In the optimal state, define 
+\[\begin{aligned} 
+\bar{u} &\equiv u(x^*, l^*) \\
+x^* &\equiv u_x(p,w,\bar{u})\\
+l^* &\equiv u_l(p,w,\bar{u})\\
+h^c(p,w,\bar{u}) &\equiv T - l^c(p,w,\bar{u}) \dots \textit{(The compensated labor demand/supply)}\\
+\epsilon_{h^c, w} &\equiv \frac{\partial h^c / h^c}{\partial w / w} = 
+\frac{\partial h^c}{\partial w} \cdot \frac{w}{h^c} \textit{(The uncompensated labor demand/supply elasticity)}
+\end{aligned}\]  
+Now, we define the expenditure function $E(\cdot)$ and discuss its properties:
+\[\begin{aligned}
+E(p, w , \bar{u}) &\equiv p \cdot x^c(p,w,\bar{u}) + w\cdot l^c(p, w, \bar{u}) \\
+&= p \cdot x^c(p,w,\bar{u}) + w\cdot (T - h^c(p, w, \bar{u})) \\
+&=  \underbrace{p \cdot x^c(p,w,\bar{u}) - w\cdot h^c(p, w, \bar{u})}_{E^*(p, w, \bar{u}) \textit{(minimum needed value of non-labor income)}} + wT  \\
+\end{aligned}\]
+Now, differentiate $E^*(\cdot)$ w.r.t $w$ to yield 
+\[\frac{\partial E^*}{\partial w} = \frac{\partial E(p, w, \bar{u})}{\partial w} - T\]
+By the envelope theorem, 
+\[= l^c(p, w, \bar{u}) - T = T - h^c - T = -h^c]\]
+We can also derive concavity:
+\[\begin{aligned}
+\frac{\partial ^2}{\partial w^2} E^* &= \frac{\partial}{\partial w} - h ^c < 0 \\
+&\implies \frac{\partial}{\partial w} h ^c > 0
+\end{aligned}\]
+The Slutsky Decomposition follows as: 
+\[h^c(p, w, \bar{u}) = h^u(p,w,y) \]
+where $y = E^*(p, w, \bar{u})$.  
+Totally differentiate both sides of this equation w.r.t $w$ to get: 
+\begin{align*}
+\frac{\partial}{\partial w}h^c(p, w, \bar{u}) &= \frac{\partial}{\partial w}h^u(p,w,y) + \frac{\partial}{\partial y} h^u(p,w,y) \cdot \frac{\partial y}{\partial w} \\
+&= \frac{\partial}{\partial w}h^u(p,w,E^*) + \frac{\partial}{\partial y} h^u(p,w,E^*) \cdot \frac{\partial E^*}{\partial w} \\
+\implies  \frac{\partial h^c}{\partial w} &= \frac{\partial h^u}{\partial w} + \frac{\partial h^u}{\partial y} \cdot \underline{(-h^c)}_{\text{From Envelope theorem}}  \\
+\implies  \frac{\partial h^u}{\partial w} &= \frac{\partial h^c}{\partial w} + \frac{\partial h^u}{\partial y} \cdot h^c \tag{$\star$}
+\end{align*}
+Where 
+\[\begin{aligned}
+&\frac{\partial h^u}{\partial y} = \frac{\partial (T - l^u(p,w,y))}{\partial y} = -\frac{\partial l^u}{\partial y} < 0 \dots \text{(Income Effect)} \\
+&\frac{\partial h^c}{\partial w} > 0 \dots\text{(Substitution Effect)} \\
+&h^c > 0
+\end{aligned}\]
+Thus, the substitution and income effect each work in the opposite direction in the final equation we have derived, rendering the effect of an increase in wage on labor supply ambiguous.  
+
+\item[2)]  
+
+Formulating the welfare program model:  
+\[\begin{aligned}
+G &= \text{max benefit}  \\
+S &= G - t(wh) \dots \text{actual budget where $t$ is tax rate (benefit reduction)} \\
+dw &= -tw \\
+dy &= G
+\end{aligned}\]
+Totally differentiate uncompensated labor demand w.r.t $w$:
+\[\begin{aligned}
+\frac{d h^u}{dw} &= \frac{\partial h ^u}{\partial w} + \frac{\partial h ^u}{\partial y}\cdot \frac{dy}{dw} \\
+\implies dh^u &=\frac{\partial h ^u}{\partial w}\cdot dw + \frac{\partial h ^u}{\partial y}\cdot dy
+\end{aligned}\]
+Plugging in $(\star)$, 
+\[\begin{aligned}
+dh^u &= (\frac{\partial h^c}{\partial w} + \frac{\partial h^u}{\partial y} \cdot h^c)(-tw) + \frac{\partial h ^u}{\partial y}\cdot dy \\
+&= -tw\frac{\partial h^c}{\partial w} + \frac{\partial h^u}{\partial y}(-twh^c + dG) \\
+\implies \frac{dh^u}{h} &= (-t)\cdot\frac{w}{h}\frac{\partial h^c}{\partial w} + \frac{\partial h^u}{\partial y}\frac{y}{h}(\frac{G-twh}{y})
+\end{aligned}\]
+Where $h = h^u = h^c$. 
+\[\begin{aligned}
+\implies \frac{dh^u}{h} &= \epsilon_{h^c,w}(-t) + \epsilon_{h^u, y} \cdot \frac{S}{y}
+\end{aligned}\]
+Where $\epsilon_{h^c,w} > 0$, $-t < 0$, $\epsilon_{h^u, y} < 0$, $\frac{S}{y} > 0$. Thus, the substitution effect $\epsilon_{h^c,w}(-t)$ of welfare and income affect $\epsilon_{h^u, y} \cdot \frac{S}{y}$ of welfare are both negative, and unambiguously reduce labor supply.
+
+\end{enumerate}
+
+# 2.  
+
+\break 
+
+# 3.  
+
+\break
+
+# 4.  
+
+\break
+
+ 
+  
+
+
+
+# 5. Data exercise  
+
+\textit{In a few weeks, we will discuss disability insurance in detail. This data exercise is based on the paper The Impact of Economic Conditions on Participation in Disability Programs: Evidence from the Coal Boom and Bust (Black, Daniel, and Sanders 2002), which you should read before starting this question.}  
+  
+```{r, include}
+library(tidyr)
+library(dplyr)
+library(data.table)
+library(Hmisc)
+library(ivpack)
+library(stargazer)
+library(ggplot2)
+```
+  
+## a.  
+
+\textit{What is the causal relationship of interest in this paper? Write down the structural equation. Note: this equation does not appear in the paper.}  
+  
+The paper estimates the marginal returns to medical care by investigating the relationship between costs of medical inputs and child mortality rates.  
+
+\[\Delta y = \alpha_0 + x\alpha_1 + \alpha_{2}\Delta (medical\:inputs) + \epsilon\]
+
+Where $y$ is child mortality rates.  
+   
+## b.  
+
+\textit{What is the problem with estimating this equation in cross-sectional data? In what direction is the estimate likely to be biased?}  
+  
+Cross-sectional studies estimate returns to additional, incremental spending that occur in some areas but not others, and on average find similar health outcomes across section. However, they fail to account for the endogenous correlation of the health risk of a population and medical expenditure for that population. Thus, given the similarity in health outcomes across sections, this type of study finds trouble identifying a significant correlation between medical spending and improvement of health outcomes. This likely biases the estimates downward, towards the conclusion that the effect of medical spending on mortality is null. 
+
+## c. 
+
+\textit{Fuzzy RD is just a form of IV. What is the instrument in this context? Explain how the instrument allows you to get an unbiased estimate of the causal relationship of interest.}  
+  
+The instrument is the VLBW indicator. Assuming continuity of other relevant factors contributing to an infant's mortality, infants that are just below the threshold of $1500g$ receive higher medical inputs (summarized in medical expenditure) than infants just above due to medical customs and guidelines. Thus, this instrument allows us to isolate medical spending and overall medical inputs from the individual infant's risk level, and show the effect that medical spending has on infant mortality while controlling for health.  
+
+## d.  
+
+\textit{Write down the “first stage” regression discontinuity equation and the “reduced form” regression discontinuity equation. (These do appear in the paper.) Explain each term of the equations and the coefficients of interest.}  
+  
+$$Y_i = \alpha_0 + \alpha_1 VLBW_i + \alpha_2 VLBW_i \times (g_i - 1500) + \alpha _3 (1-VLBW_i) \times (g_i - 1500) + \alpha_t + \alpha_s + \delta X_i ' + \epsilon_i$$
+
+The first stage is when $Y_i$ denotes costs and the reduced form is when $Y_i$ denotes the infant one-year mortality rate. $VLBW_i$ is a dummy variable that indicates whether an infant is classified as $VLBW$ ($<1500g$), and its coefficient $\alpha_1$ indicates the degree to which being $VLBW$ affects mortality. The second and third terms are gram trend terms below and above the threshold, parameterized so that their coefficients are equal when the trends are the same. $\alpha_t$ and $\alpha_s$ are indicators for the year of birth $t$ and state of birth $s$. $X_i '$ are the controls used that deal with other newborn characteristics not specified in the rest of the model, and $\epsilon_i$ is the error term.  
+
+## e.  
+
+\textit{Name one or more key threats to the validity of the empirical strategy used by Almond et al. (2010). Be specific to their context. Describe what tests you would perform to assess these threats.}  
+  
+One threat is that the summary measures utilized for medical inputs may not be exhaustive, and that unobserved factors that reduce mortality may also contribute to the discontinuity in mortality around the 1500 g threshold. For example, since the 1500 g. cut-off is well known in the medical community, infants born under 1500 g. may be paid especially close attention by physicians and medical staff, and treated with more care than those who clear the 1500 g. line. This is outlined in Angert and Adam (2009). Many of these behavioral changes in the medical staff may not be picked up by the summary measure (medical costs), and result in a slight upward bias. This threat can be analyzed by obtaining records of infants just below and above the 1500 g. threshold with identical treatment/medical input records and analyze for a notable difference in their mortality.  
+Moreover, using the summary statistic of medical cost may run the risk of overlooking price changes corresponding with weight, but as the authors suggest in the paper, this threat can be tested by analyzing for discontinuity in pricing across the VLBW threshold, among other methods. 
+  
+## f.  
+
+\textit{Download the data set from: http://data.nber.org/lbid/adkw.dta. Import the data set to your preferred statistical analysis program (e.g., Stata, R). By downloading the data set, you agree to the following NCHS data rules: 1) Use the data in this dataset for statistical reporting and analysis only. 2) Make no use of the identity of any person or establishment discovered inadvertently and advise the Director, NCHS, of any such discovery. 3) Not link this dataset with individually identifiable data from other NCHS or non- NCHS datasets.}
+
+### i.  
+
+\textit{i. Replicate Figure 2-A, which gives the main finding of the paper.}
+
+#### A. 
+
+\textit{Group births into 1-ounce (28.3495-gram) bins, radiating outward from the 1500 gram threshold.}  
+  
+```{r}
+# loading in data
+dat <- read.csv("DataExercise_RD/adkw.csv")
+```
+
+```{r}
+# creating bin categories 
+ub <- max(dat$dbirwt)
+lb <- min(dat$dbirwt)
+s1 <- seq(from = 1500, to = ub, by = 28.3495)
+s2 <- rev(seq(from = 1500, to = lb, by = -28.3945))
+s2 <- head(s2, -1)
+bins <- c(s2, s1)
+bins <- c(-Inf, bins, Inf)
+bin_groups <- seq(1:(length(bins) - 1))
+bins; bin_groups
+```
+```{r}
+# cutting data into bins 
+dat$bwt_bins <- cut(dat$dbirwt, breaks = bins, labels = bin_groups)
+```
+
+#### B. 
+
+\textit{For each bin, plot the bin’s mean one year mortality against the bin’s median birthweight.}  
+
+```{r}
+gdat <- dat %>%
+  group_by(bwt_bins) %>%
+  mutate(bin_medianwt = median(dbirwt, na.rm = TRUE)) %>%  # median bwt
+  mutate(bin_meandeath = mean(death1year, na.rm = TRUE)) %>%  # mean mortality 
+  mutate(bin_meanage = mean(gestat, na.rm = TRUE)) # mean gestational age
+```
+
+
+```{r}
+ggplot(gdat, aes(x = bin_medianwt, y = bin_meandeath)) +
+  geom_point(pch = 16) +
+  xlim(1400, 1600) + 
+  geom_vline(xintercept = 1500) +
+  labs(x = "Birth weight (g)", y = "Mean 1 Year Mortality") +
+  ggtitle("One Year Mortality")
+```
+
+#### C. 
+
+\textit{Interpret the graph you created, which is the main finding of the paper.}  
+
+Due to the limitations of our data, we are unable to observe the same discontinuity that was observed in the paper. Mean mortality seems to be continuous around the 1500g. line, and if there is a discontinuity it seems to be between the bins with 1443.211-1471.605 g. and 1471.605-1500.000 g. Thus, replicating the analyses in the paper on this data set may not be appropriate. 
+  
+### ii.  
+
+\textit{Test for differences in observable covariates across the 1500 gram threshold (replicate Figure
+5-A from the paper).}
+
+#### A.  
+
+\textit{Adapt the method used in (i) to replicate Figure 5-A (the covariate of interest is gestational age).}  
+
+```{r}
+ggplot(gdat, aes(x = bin_medianwt, y = bin_meanage)) +
+  geom_point(pch = 16) +
+  geom_vline(xintercept = 1500) +
+  xlim(1400, 1600) + 
+  labs(x = "Birth weight (g)", y = "Mean Gestational Age") +
+  ggtitle("Gestational Age")
+```
+
+#### B. 
+
+\textit{Which RD identifying assumption does this figure support? Explain.}  
+This graph shows continuity of other covariates that likely contribute to child mortality around the 1500 g. line. Continuity in the covariates allows us to assume that the only factor contributing to the discontinuity observed in the original data is the binary indicator of whether a child crosses the 1500 g. threshold or not, which acts as a proxy for quantity of medical inputs received by the infant. Without this assumption, there may be underlying factors contributing to the discontinuity and our research design will not be able to isolate and pick up the effects of medical inputs on child mortality.  
+  
+### iii.  
+
+\textit{Above, you wrote down the reduced form equation that appears in the paper.}
+
+\break
+
+#### A.  
+
+\textit{Construct a dummy variable $VLBW_i$ that equals one if the infant is classified as very low birthweight (i.e., birthweight strictly less than 1500 grams), and 0 otherwise.}
+  
+```{r}
+# creating dummy 
+dat <- dat %>%
+  mutate(VLBW = ifelse(dbirwt < 1500, 1, 0),
+         trend.down = VLBW * (dbirwt - 1500), 
+         trend.up = (1 - VLBW) * (dbirwt - 1500))
+```
+
+
+#### B.  
+
+
+\textit{Ignore the terms $\alpha _t$, $\alpha_s$ and $\delta X_i$ in the reduced form equation. Estimate the reduced form equation by OLS. Obtain heteroskedastic-robust standard errors.}  
+  
+```{r} 
+# OLS estimate
+reduced.ols <- lm(death1year ~ VLBW + trend.down + trend.up, data = dat)
+```
+```{r}
+# Heteroskedastic robust standard errors 
+hkse <- function(reg){robust.se(reg)[,2]}
+ols_error <- hkse(reduced.ols)
+```
+
+
+#### C.  
+  
+*Construct a table that contains the estimated coefficients $\hat{\alpha}_1, \hat{\alpha}_2, \hat{\alpha}_3$ from the reduced form equation. Report standard errors in parentheses below each estimate. In your table, indicate whether each estimated coefficient is significant at a 1%, 5% or 10% level.*
+
+```{r, results = "asis"}
+stargazer(reduced.ols, type="latex", title = "OLS Results", 
+          se = list(ols_error), header = FALSE, no.space=TRUE)
+```
+
+
+  
+  
+  
+  
+  
+  
+  

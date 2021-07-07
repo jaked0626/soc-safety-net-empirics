@@ -1,0 +1,451 @@
+---
+title: "Homework 4"
+subtitle: "ECON 24450 Spring, 2021"
+author: "Jake Underland"
+date: "`r Sys.Date()`"
+header-includes:
+   - \usepackage{amsmath}
+   - \usepackage{dcolumn}
+   - \usepackage{rotating}
+   - \usepackage{bbm}
+output:
+  pdf_document: 
+    latex_engine: xelatex
+    toc: true
+    toc_depth: 1
+    extra_dependencies: ["amsmath", "dcolumn", "rotating", "hyperref"]
+    keep_tex: true
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: yes
+  word_document:
+    toc: false
+    toc_depth: '3'
+---
+</style>
+
+<style type="text/css">
+
+body, td {
+   font-size: 20px;
+}
+
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE)
+```
+
+    Read the journal article posted on Canvas, “The Oregon Health Insurance Experiment: Evidence from the First Year,” by Finkelstein et al. (QJE 2013). Provide brief answers to the following questions. The question is interesting because, although there have been many attemtps to elucidate the effects of  medicaid on health and other individual outcomes, research has been confounded by difficulty of controlling for unobserved differences between insured and uninsured originating from selection. It is rare to have a random assignment setting where such confounding factors can be controlled. 
+
+# Question 1.  
+
+What is the research question being addressed and why is it an interesting empirical question?  
+
+\textit{Solution.}\newline
+    The research question asks what the effect of Medicaid and expanding access to public health insurance is on the use of health care, financial strain, and health of low-income adults. 
+
+# Question 2.  
+
+The following questions relate to the internal validity of the Oregon Health Insurance experiment (OHIE).  
+  
+\begin{enumerate}
+\item[(a)] What is the identifying assumption of the randomized controlled trial? What are possible violations of the identifying assumption?
+\newline
+\newline
+\textit{Solution.}\newline
+    The identifying assumption is that the treated and untreated groups are identical other than the treatment they receive, i.e., assignment of the ability to apply for OHP Standard was random, and that the treatment and control individuals in the subsamples used to analyze outcomes are not differentially selected from the full sample. This can be violated by nonrandom assignment, or when certain types of people are more likely to select into either the treatment or control group. Even when we enforce random assignment in our experimental design, there may be correlations in treated vs. untreated with other unobservable coavariates. Additionally, differential participation, where the participation rate across populations is nonrandom and certain subgroups are more likely to drop out when assigned to one of the treatment or control groups, can also bias estimates.  
+
+\item[(b)] What do Finkelstein et al. do to test for random assignment? Refer to specific page numbers, figures, and tables as appropriate.
+\newline
+\newline
+\textit{Solution.}\newline
+    They verified the randomization procedure followed by Oregon's DHS through computer simulations and demonstrated balance of treatment and control characteristics in the online appendix and Table A12. Additionally, in Table II, they conduct a covariance balance test for differences in attrition for both credit reports and survey responses, nine "lotterly list variables" they constructed from prerandomization characteristics as well as  for pre-randomization outcomes to examine treatment and control balance, found on page 1075. 
+
+\item[(c)] Why is it a problem if the treatment and control groups differentially report outcomes? Is differential reporting expected to be a problem in this context? Why or why not?
+\newline
+\newline
+\textit{Solution.}\newline
+    Differential reporting biases estimates as it increases the weight of the outcomes more likely to be reported in the analysis. If a ceratin subset of people are more likely to report their outcomes in one group than the other, we can no longer say that the two groups we are examining (via the reports) are identical on average. Differential reporting in this paper is not a problem for the outcomes measured by administrative records, but is a problem for the survey data with an effective response rate of 50\%. However, from the covariance balance test, the authors find a very small effect of treatment on the survey response rate. 
+
+\item[(d)] s imperfect take-up of Medicaid in the treatment group a threat to validity? Why or why not? Compare the consequences of imperfect take-up of Medicaid in the treatment group on the OHIE to the situation we saw in class with differential attrition across treatment groups in the RAND health insurance experiment.
+\newline
+\newline
+\textit{Solution.}\newline
+    Imperfect take up of Medicaid in the treatment group is not a threat in this context. In terms of the ITT, the authors are interested in the effects of expansion of access to public health insurance, which does not require take-up of Medicaid after treatment. Second, in the IV model they employ to estimate the effect of actual coverage on Medicaid, the authors are estimating the local average treatment effect of the compliers in the dataset, to which the population that did not take-up medicaid do not belong and therefore pose no threat to the validity of the estimation method. In the RAND experiment, the causal relationship studied was not expansion of access to health care but actual enrollment. Examining this model required randomness and identicalness upon average across the groups, but since the distribution of refusal and attrition rates were nonrandom and increased significantly in the non-generous group, being unable to access administrative records, this led to a nonrandom loss of data for that group, potentially biasing estimates. 
+
+
+\item[(e)] What other possible violations of the exclusion restriction do Finkelstein et al. consider? How do they test for these violations?
+\newline
+\newline
+\textit{Solution.}\newline
+    They consider the possibility of direct effects that the event of winning the lottery may have on the individual's outcomes, and whether application for Medicaid encourages individuals to apply for other public programs. These do not change the validity of the effects of expanded access to public health care, but do violate the exclusion principle necessary to pin these effects on actual coverage.\newline
+    The authors conduct a covariate balance test reported in Table III. They conclude that selection by the lottery is not associated with TANF receipt and has a trivial association with food stamp receipt.
+
+\end{enumerate}  
+
+# Question 3.  
+
+The following questions relate to the paper’s estimation strategy.  
+
+\begin{enumerate}
+
+\item[(a)] Write down the structural equation of interest. Write down the reduced form equation and first stage equation. Why do Finkelstein et al. say that there is ambiguity about what the correct endogeneous variable is?
+\newline
+\newline
+\textit{Solution.}\newline
+The structural equation of interest is:
+\[y_{ihj} = \pi_o + \pi_1 INSURANCE_{ih} + X_{ih} \pi_2 + V_{ih}\pi_3 +v_{ihj}\]
+And the first stage is: 
+\[INSURANCE_{ih} = \delta_0 + \delta_1 LOTTERY_{h} + X_{ih} \delta_2 + V_{ih}\delta_3 +\mu_{ihj}\]
+And the reduced form and intent to treat effect is:
+\[y_{ihj} = \beta_0 + \beta_1 LOTTERY_h + X_{ih} \beta_2 + V_{ih}\beta_3 +\epsilon_{ihj}\]
+The authors use "Ever on Medicaid" as the endogenous variable, but other measures of insurance such as "the number of months on medicaid", and "on medicaid at the end of our study" are also useful in that the former may be more appropriate for modeling outcomes where the effect of insurance on outcomes is linear in the duration insured, and the latter provides an insightful lower bound on the first stage.
+
+
+
+\item[(b)] Why do Finkelstein et al. include controls in equation (1)?
+\newline
+\newline
+\textit{Solution.}\newline
+    The controls in $X$ are correlated with treatment and must be controlled for in order to achieve randomness and get an unbiased estimate, as the identifying assumption of RCT requires. The controls in $V$ are included for increased precision. 
+
+\item[(c)]What is the first stage estimate for ever on Medicaid? Interpret the estimate. Why is it less than one?
+\newline
+\newline
+\textit{Solution.}\newline
+    The results show a first stage of 0.26 for the full sample and credit-report subsample and a first stage of 0.29 for the survey respondents. This implies that winning the lottery increases the chance of a household enrolling in medicaid by 30\%. The coefficient is less than 1 because of the 30% take-up of those that won the lottery. No one in the control group enrolled in medicaid, but not all in the treatment did either, giving the cefficient a value below 0. 
+
+\item[(d)] Describe who the complier population is for this local average treatment effect. How generalizable is this particular LATE is to the effect of Medicaid on other populations (e.g., children and pregnant women)? How generalizable is this LATE to the effect of the Medicaid expansions under the Affordable Care Act?
+\newline
+\newline
+\textit{Solution.} \newline
+    The compiler population is somewhat older white people who are worse in health than average. Thus, the results of this paper are hard to generalize, as children are much younger than the complier population observed here, while pregnant women would possibly be in better health given their pregnancy, again deviating from the complier population described here. Medicaid expansions under the ACA mainly increased coverage of non-white minorities, and the age range that saw the largest increase in coverage was 19-34 as seen \textcolor{blue}{\href{https://www.urban.org/sites/default/files/publication/86761/2001041-who-gained-health-insurance-coverage-under-the-aca-and-where-do-they-live.pdf}{here}}. Thus, the effects of this study also seem difficult to generalize to expansions under the ACA. 
+
+\end{enumerate}
+
+# Question 4.  
+
+This question asks you to consider the results of this paper, plus the results of the Oregon Health Insurance Experiment more generally.  
+
+\begin{enumerate}
+
+\item[(a)] Summarize this paper’s results on the effect of Medicaid on
+\begin{enumerate}
+
+\item[i.] Health care utilization
+\newline
+\newline
+\textit{Solution.}\newline
+    Medicaid increased emergency care by 40\%, outpatient office visits by 55\%, prescription drug use by 15\%, non-emergency department hospitalizations, and diabetes and depression diagnoses. In sum, Medicaid increased health care utilization for almost all variables measured save ER use. 
+
+\item[ii.] Financial strain
+\newline
+\newline
+\textit{Solution.}\newline
+    The average standardized treatment effect suggests no evidence of a decline in bankruptcy, lien, judgment, collection, or delinquency. However, self reported surveys show that Medicaid eliminated out of pocket catastrophic expenditures by 35\% and reduced probability of having to borrow money or skip paying other bills because of medical expenses by more than 40\%. Credit reports tell a similar story, as Medicaid decreased probability of having unpaid medical bill sent to collection agency by 25\%. 
+
+\item[iii.] Health
+\newline
+\newline
+\textit{Solution.}\newline
+    Medicaid improved self-reported health and reduced depression. There is a 32\% increase in self-reported overall happiness, and rates of depression dropped by 30\%. The effects on phsyical health, on the other hand, were not statistically significant, even among higher risk groups. 
+
+\end{enumerate}
+
+\item[(b)] The Oregon Health Insurance Experiment has received extensive media coverage. In 2011, an NPR headline read “Medicaid Makes ’Big Difference’ in Lives, Study Finds.” In 2013, a Washington Post headline read “Spending on Medicaid doesn’t actually help the poor.” These headlines seem contradictory. Given the results of this paper and the other OHIE papers we summarized in class, which of these headlines do you think is correct and why?
+\newline
+\newline
+\textit{Solution.}\newline
+    Although the effects of medicare can vary widely between complier populations, this paper and others seem to support the notion that Medicaid does improve the lives of lower socioeconomic individuals. From this paper alone, we find that Medicaid has benefits on mental health, hospital utilization, and consumption smoothing. Medicaid might not contribute, at least from this study, to physical health, but that does not mean that it does not significantly improve the lives of the poor. The 32\% increase in self-reported overall happiness documented in this paper should be sufficient in dismissing that notion. Some argue that bankruptcy essentially acts as a standin for Medicaid among low income individuals, but even then, funding for Medicaid is being used to fund hospitals treating low income uninsured individuals who are not formal recipients of medicaid. Pooling all of these effects, not to mention the benefits of being relieved from debt and bankruptcy with the help of medicaid, it is safe to say that Medicaid does make a big difference in people's lives. 
+
+\end{enumerate}
+
+
+# Question 5.  
+
+## a.  
+
+```{r, include = F}
+library(tidyr)
+library(dplyr)
+library(data.table)
+library(Hmisc)
+library(ivpack)
+library(stargazer)
+library(stringr)
+library(lfe)
+```
+
+```{r}
+raw_df <- read.csv("pset_experiment_data.csv.crdownload")
+```
+
+
+## b.  
+
+```{r}
+df <- raw_df
+# coding binary variables 
+df[df==""] <- NA
+df$treatment <- as.numeric(df$treatment == "Selected", na.rm = T)
+df$returned_12m <- as.numeric(df$returned_12m == "Yes", na.rm=T)
+df$ohp_all_ever_survey <- as.numeric(df$ohp_all_ever_survey == "Enrolled", na.rm = T)
+df$ohp_all_mo_survey <- as.integer(str_remove(df$ohp_all_mo_survey, " months|month"), na.rm = T)
+X <- names(df)[grep("ddd", names(df))]
+```
+```{r}
+avg_treatment <- mean(df[df$treatment == 1,]$returned_12m, na.rm = T)
+avg_control <- mean(df[df$treatment == 0,]$returned_12m, na.rm = T)
+# Testing for difference in response rate
+response_rate <- df %>% 
+  filter(treatment == 1 | treatment == 0) %>%
+  select(treatment, returned_12m)
+res <- t.test(returned_12m ~ treatment, data = df)
+cat("Average 12 month survey response rate for treatment:", avg_treatment, 
+    "\nAverage 12 month survey response rate for control:", avg_control,
+    "\nDifference:", abs(avg_treatment - avg_control))
+res
+```
+
+From the above results, there seems to be a statistically significant difference in the means of the treatment and control groups, but very small and trivial.  
+
+## c.  
+
+### i.  
+
+```{r}
+full_df <- df[!is.na(df$weight_12m), ]
+sub_df <- df[df$sample_12m_resp == "12m mail survey responder", ]
+sub_df <- sub_df[!is.na(sub_df$weight_12m), ]
+```
+
+```{r}
+# A
+# Full sample
+ever_lottery <- felm(as.formula(paste("ohp_all_ever_survey", 
+                            "~ treatment +", paste(X, collapse = "+"),
+                            "|0|0|household_id")), data = full_df, 
+                            weights = full_df$weight_12m)
+# survey respondents
+ever_lottery_sub <- felm(as.formula(paste("ohp_all_ever_survey", 
+                            "~ treatment +", paste(X, collapse = "+"),
+                            "|0|0|household_id")), data = sub_df, 
+                            weights = sub_df$weight_12m)
+
+# B 
+months_lottery <- felm(as.formula(paste("ohp_all_mo_survey", 
+                            "~ treatment +", paste(X, collapse = "+"),
+                            "|0|0|household_id")), data = full_df, 
+                            weights = full_df$weight_12m)
+months_lottery_sub <- felm(as.formula(paste("ohp_all_mo_survey", 
+                            "~ treatment +", paste(X, collapse = "+"),
+                            "|0|0|household_id")), data = sub_df, 
+                            weights = sub_df$weight_12m)
+# C 
+end_lottery <- felm(as.formula(paste("ohp_all_end_survey", 
+                            "~ treatment +", paste(X, collapse = "+"),
+                            "|0|0|household_id")), data = full_df, 
+                            weights = full_df$weight_12m)
+end_lottery_sub <- felm(as.formula(paste("ohp_all_end_survey", 
+                            "~ treatment +", paste(X, collapse = "+"),
+                            "|0|0|household_id")), data = sub_df, 
+                            weights = sub_df$weight_12m)
+```
+
+### ii. 
+
+```{r, results = "asis", echo = F}
+stargazer(ever_lottery, ever_lottery_sub, months_lottery, months_lottery_sub,  
+          end_lottery, end_lottery_sub,
+          type="latex", title = "First Stage Results", omit = "ddd", 
+          omit.labels = "fixed effects", header = FALSE, no.space=TRUE, 
+          column.sep.width = "3pt", font.size = "small", align=TRUE,
+          float.env = "sidewaystable",
+          dep.var.labels = c("Ever on Medicaid", "Num of Months on Medicaid",
+                             "On Medicaid, end of study period"),
+          column.labels = c("Full Sample", "Survey Respondents","Full Sample", "Survey Respondents","Full Sample", "Survey Respondents"), 
+          column.separate = c(1, 1, 1, 1, 1, 1), omit.stat=c("ser"))
+```
+
+\newpage
+## d.  
+
+### i.  
+
+```{r}
+# creating variables
+full_df$rx_any_12m <- as.numeric(full_df$rx_any_12m == "Yes", na.rm = T)
+full_df$doc_any_12m <- as.numeric(full_df$doc_any_12m == "Yes", na.rm = T)
+full_df$er_any_12m <- as.numeric(full_df$er_any_12m == "Yes", na.rm = T)
+full_df$hosp_any_12m <- as.numeric(full_df$hosp_any_12m == "Yes", na.rm = T)
+full_df$cost_any_oop_12m <- as.numeric(full_df$cost_any_oop_12m == "Yes", na.rm = T)
+full_df$cost_any_owe_12m <- as.numeric(full_df$cost_any_owe_12m == "Yes", na.rm = T)
+#full_df$health_notpoor_12m <- as.numeric(full_df$health_notpoor_12m == "Yes", na.rm = T)
+#full_df$notbaddays_tot_12m <- as.numeric(full_df$notbaddays_tot_12m == "Yes", na.rm = T)
+
+sub_df <- full_df[full_df$sample_12m_resp == "12m mail survey responder", ]
+sub_df <- sub_df[!is.na(sub_df$weight_12m), ]
+```
+
+```{r}
+# A
+# survey respondents
+prescription.sub <- felm(as.formula(paste("rx_any_12m ~ ", 
+                         paste(X, collapse = " + "),
+                         "| 0 | (ohp_all_ever_survey", 
+                         "~ treatment)",
+                         " | household_id")), data = sub_df, 
+                         weights = sub_df$weight_12m)
+# B
+# survey respondents
+primary.care.sub <- felm(as.formula(paste("doc_any_12m ~ ", 
+                         paste(X, collapse = " + "),
+                         "| 0 | (ohp_all_ever_survey", 
+                         "~ treatment)",
+                         " | household_id")), data = sub_df, 
+                         weights = sub_df$weight_12m)
+# C
+# survey respondents
+ER.visits.sub <- felm(as.formula(paste("er_any_12m ~ ", 
+                       paste(X, collapse = " + "),
+                       "| 0 | (ohp_all_ever_survey", 
+                       "~ treatment)",
+                       " | household_id")), data = sub_df, 
+                       weights = sub_df$weight_12m)
+# D
+# survey respondents
+hosp.visits.sub <- felm(as.formula(paste("hosp_any_12m ~ ", 
+                     paste(X, collapse = " + "),
+                     "| 0 | (ohp_all_ever_survey", 
+                     "~ treatment)",
+                     " | household_id")), data = sub_df, 
+                     weights = sub_df$weight_12m)
+# E
+# survey respondents
+oop.cost.sub <- felm(as.formula(paste("cost_any_oop_12m ~ ", 
+                         paste(X, collapse = " + "),
+                         "| 0 | (ohp_all_ever_survey", 
+                         "~ treatment)",
+                         " | household_id")), data = sub_df, 
+                         weights = sub_df$weight_12m)
+# F
+# survey respondents
+owe.medexp.sub <- felm(as.formula(paste("cost_any_owe_12m ~ ", 
+                         paste(X, collapse = " + "),
+                         "| 0 | (ohp_all_ever_survey", 
+                         "~ treatment)",
+                         " | household_id")), data = sub_df, 
+                         weights = sub_df$weight_12m)
+# G
+# survey respondents
+health.good.sub <- felm(as.formula(paste("health_notpoor_12m ~ ", 
+                         paste(X, collapse = " + "),
+                         "| 0 | (ohp_all_ever_survey", 
+                         "~ treatment)",
+                         " | household_id")), data = sub_df, 
+                         weights = sub_df$weight_12m)
+# H
+# survey respondents
+not.bad.days.sub <- felm(as.formula(paste("notbaddays_tot_12m ~ ", 
+                         paste(X, collapse = " + "),
+                         "| 0 | (ohp_all_ever_survey", 
+                         "~ treatment)",
+                         " | household_id")), data = sub_df, 
+                         weights = sub_df$weight_12m)
+```
+
+
+
+### ii.  
+
+```{r}
+# A
+# survey respondents
+prescription.ols <- felm(as.formula(paste("rx_any_12m", 
+                            "~ treatment +", paste(X, collapse = "+"),
+                            "|0|0|household_id")), data = sub_df, 
+                            weights = sub_df$weight_12m)
+
+# B 
+primary.care.ols <- felm(as.formula(paste("doc_any_12m ~ ",  
+                            "treatment +", paste(X, collapse = "+"),
+                            "|0|0|household_id")), data = sub_df, 
+                            weights = sub_df$weight_12m)
+# C 
+ER.visits.ols <- felm(as.formula(paste("er_any_12m ~ ", 
+                            "treatment +", paste(X, collapse = "+"),
+                            "|0|0|household_id")), data = sub_df, 
+                            weights = sub_df$weight_12m)
+# D 
+hosp.visits.ols <- felm(as.formula(paste("hosp_any_12m ~ ", 
+                            "treatment +", paste(X, collapse = "+"),
+                            "|0|0|household_id")), data = sub_df, 
+                            weights = sub_df$weight_12m)
+# E 
+oop.cost.ols <- felm(as.formula(paste("cost_any_oop_12m ~ ", 
+                            "treatment +", paste(X, collapse = "+"),
+                            "|0|0|household_id")), data = sub_df, 
+                            weights = sub_df$weight_12m)
+# F 
+owe.medexp.ols <- felm(as.formula(paste("cost_any_owe_12m ~ ",
+                            "treatment +", paste(X, collapse = "+"),
+                            "|0|0|household_id")), data = sub_df, 
+                            weights = sub_df$weight_12m)
+# G 
+health.good.ols <- felm(as.formula(paste("health_notpoor_12m ~ ", 
+                            "treatment +", paste(X, collapse = "+"),
+                            "|0|0|household_id")), data = sub_df, 
+                            weights = sub_df$weight_12m)
+# H 
+not.bad.days.ols <- felm(as.formula(paste("notbaddays_tot_12m ~ ", 
+                            "treatment +", paste(X, collapse = "+"),
+                            "|0|0|household_id")), data = sub_df, 
+                            weights = sub_df$weight_12m)
+```
+
+### iii.
+
+2SLS rsults reported in Table 2, ITT results reported in Table 3.  
+
+### iv.  
+
+The coefficient on insurance from IV estimation of equation (3) can be interpreted as a local average treatment effect of insurance, or the causal impact of insurance among the compliers who would usually not obtain insurance.
+
+The coefficient on the lottery dummy gives the average difference in means between the treated and control groups, or the impact of expanded *access to health care* on various outcome variables. 
+
+```{r, results = "asis", echo = F}
+stargazer(prescription.sub, primary.care.sub, ER.visits.sub, hosp.visits.sub, oop.cost.sub, owe.medexp.sub, health.good.sub, not.bad.days.sub,
+          type="latex", title = "2SLS Results", omit = "ddd", 
+          omit.labels = "fixed effects", header = FALSE, no.space=TRUE, 
+          column.sep.width = "0pt", font.size = "small", align=TRUE,
+          float.env = "sidewaystable",
+          dep.var.labels = c("Prescription", "Primary Care", "ER visits",
+                             "Hospital visits", "Out of Pocket Costs", 
+                             "Owe Expenses", "Health not bad", "Not Bad Days"), covariate.labels = "LATE", omit.stat=c("ser"))
+          
+```
+
+```{r, results = "asis", echo = F}
+stargazer(prescription.ols, primary.care.ols, ER.visits.ols, hosp.visits.ols, oop.cost.ols, owe.medexp.ols, health.good.ols, not.bad.days.ols,
+          type="latex", title = "ITT:OLS", omit = "ddd", 
+          omit.labels = "fixed effects", header = FALSE, no.space=TRUE, 
+          column.sep.width = "0pt", font.size = "small", align=TRUE,
+          float.env = "sidewaystable",
+          dep.var.labels = c("Prescription", "Primary Care", "ER visits",
+                             "Hospital visits", "Out of Pocket Costs", 
+                             "Owe Expenses", "Health not bad", "Not Bad Days"), covariate.labels = "ITT", omit.stat=c("ser"))
+          
+```
+
+
+
+
+
+
+
+
+
+
+

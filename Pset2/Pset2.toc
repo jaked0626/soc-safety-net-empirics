@@ -1,0 +1,22 @@
+\contentsline {section}{1. Labor Supply Theory.}{1}{section*.2}%
+\contentsline {section}{2.}{3}{section*.5}%
+\contentsline {section}{3.}{4}{section*.6}%
+\contentsline {section}{4.}{5}{section*.7}%
+\contentsline {section}{5. Data exercise}{6}{section*.8}%
+\contentsline {subsection}{a.}{6}{section*.9}%
+\contentsline {subsection}{b.}{6}{section*.10}%
+\contentsline {subsection}{c.\nobreakspace {}}{6}{section*.11}%
+\contentsline {subsection}{d.\nobreakspace {}}{6}{section*.12}%
+\contentsline {subsection}{e.}{7}{section*.13}%
+\contentsline {subsection}{f.\nobreakspace {}}{7}{section*.14}%
+\contentsline {subsubsection}{i.}{7}{section*.15}%
+\contentsline {paragraph}{A.}{7}{section*.16}%
+\contentsline {paragraph}{B.}{8}{section*.17}%
+\contentsline {paragraph}{C.}{8}{section*.18}%
+\contentsline {subsubsection}{ii.}{9}{section*.19}%
+\contentsline {paragraph}{A.}{9}{section*.20}%
+\contentsline {paragraph}{B.}{9}{section*.21}%
+\contentsline {subsubsection}{iii.}{9}{section*.22}%
+\contentsline {paragraph}{A.}{10}{section*.23}%
+\contentsline {paragraph}{B.}{10}{section*.24}%
+\contentsline {paragraph}{C.}{10}{section*.25}%

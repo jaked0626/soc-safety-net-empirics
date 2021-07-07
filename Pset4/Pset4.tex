@@ -1,0 +1,642 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Homework 4},
+  pdfauthor={Jake Underland},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{amsmath}
+\usepackage{dcolumn}
+\usepackage{rotating}
+\usepackage{bbm}
+\usepackage{amsmath}
+\usepackage{dcolumn}
+\usepackage{rotating}
+\usepackage{hyperref}
+
+\title{Homework 4}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{ECON 24450 Spring, 2021}
+\author{Jake Underland}
+\date{2021-05-27}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+~~~~Read the journal article posted on Canvas, ``The Oregon Health
+Insurance Experiment: Evidence from the First Year,'' by Finkelstein et
+al.~(QJE 2013). Provide brief answers to the following questions. The
+question is interesting because, although there have been many attemtps
+to elucidate the effects of medicaid on health and other individual
+outcomes, research has been confounded by difficulty of controlling for
+unobserved differences between insured and uninsured originating from
+selection. It is rare to have a random assignment setting where such
+confounding factors can be controlled.
+
+\hypertarget{question-1.}{%
+\section{Question 1.}\label{question-1.}}
+
+What is the research question being addressed and why is it an
+interesting empirical question?
+
+\textit{Solution.}\newline ~~~~The research question asks what the
+effect of Medicaid and expanding access to public health insurance is on
+the use of health care, financial strain, and health of low-income
+adults.
+
+\hypertarget{question-2.}{%
+\section{Question 2.}\label{question-2.}}
+
+The following questions relate to the internal validity of the Oregon
+Health Insurance experiment (OHIE).
+
+\begin{enumerate}
+\item[(a)] What is the identifying assumption of the randomized controlled trial? What are possible violations of the identifying assumption?
+\newline
+\newline
+\textit{Solution.}\newline
+    The identifying assumption is that the treated and untreated groups are identical other than the treatment they receive, i.e., assignment of the ability to apply for OHP Standard was random, and that the treatment and control individuals in the subsamples used to analyze outcomes are not differentially selected from the full sample. This can be violated by nonrandom assignment, or when certain types of people are more likely to select into either the treatment or control group. Even when we enforce random assignment in our experimental design, there may be correlations in treated vs. untreated with other unobservable coavariates. Additionally, differential participation, where the participation rate across populations is nonrandom and certain subgroups are more likely to drop out when assigned to one of the treatment or control groups, can also bias estimates.  
+
+\item[(b)] What do Finkelstein et al. do to test for random assignment? Refer to specific page numbers, figures, and tables as appropriate.
+\newline
+\newline
+\textit{Solution.}\newline
+    They verified the randomization procedure followed by Oregon's DHS through computer simulations and demonstrated balance of treatment and control characteristics in the online appendix and Table A12. Additionally, in Table II, they conduct a covariance balance test for differences in attrition for both credit reports and survey responses, nine "lotterly list variables" they constructed from prerandomization characteristics as well as  for pre-randomization outcomes to examine treatment and control balance, found on page 1075. 
+
+\item[(c)] Why is it a problem if the treatment and control groups differentially report outcomes? Is differential reporting expected to be a problem in this context? Why or why not?
+\newline
+\newline
+\textit{Solution.}\newline
+    Differential reporting biases estimates as it increases the weight of the outcomes more likely to be reported in the analysis. If a ceratin subset of people are more likely to report their outcomes in one group than the other, we can no longer say that the two groups we are examining (via the reports) are identical on average. Differential reporting in this paper is not a problem for the outcomes measured by administrative records, but is a problem for the survey data with an effective response rate of 50\%. However, from the covariance balance test, the authors find a very small effect of treatment on the survey response rate. 
+
+\item[(d)] s imperfect take-up of Medicaid in the treatment group a threat to validity? Why or why not? Compare the consequences of imperfect take-up of Medicaid in the treatment group on the OHIE to the situation we saw in class with differential attrition across treatment groups in the RAND health insurance experiment.
+\newline
+\newline
+\textit{Solution.}\newline
+    Imperfect take up of Medicaid in the treatment group is not a threat in this context. In terms of the ITT, the authors are interested in the effects of expansion of access to public health insurance, which does not require take-up of Medicaid after treatment. Second, in the IV model they employ to estimate the effect of actual coverage on Medicaid, the authors are estimating the local average treatment effect of the compliers in the dataset, to which the population that did not take-up medicaid do not belong and therefore pose no threat to the validity of the estimation method. In the RAND experiment, the causal relationship studied was not expansion of access to health care but actual enrollment. Examining this model required randomness and identicalness upon average across the groups, but since the distribution of refusal and attrition rates were nonrandom and increased significantly in the non-generous group, being unable to access administrative records, this led to a nonrandom loss of data for that group, potentially biasing estimates. 
+
+
+\item[(e)] What other possible violations of the exclusion restriction do Finkelstein et al. consider? How do they test for these violations?
+\newline
+\newline
+\textit{Solution.}\newline
+    They consider the possibility of direct effects that the event of winning the lottery may have on the individual's outcomes, and whether application for Medicaid encourages individuals to apply for other public programs. These do not change the validity of the effects of expanded access to public health care, but do violate the exclusion principle necessary to pin these effects on actual coverage.\newline
+    The authors conduct a covariate balance test reported in Table III. They conclude that selection by the lottery is not associated with TANF receipt and has a trivial association with food stamp receipt.
+
+\end{enumerate}
+
+\hypertarget{question-3.}{%
+\section{Question 3.}\label{question-3.}}
+
+The following questions relate to the paper's estimation strategy.
+
+\begin{enumerate}
+
+\item[(a)] Write down the structural equation of interest. Write down the reduced form equation and first stage equation. Why do Finkelstein et al. say that there is ambiguity about what the correct endogeneous variable is?
+\newline
+\newline
+\textit{Solution.}\newline
+The structural equation of interest is:
+\[y_{ihj} = \pi_o + \pi_1 INSURANCE_{ih} + X_{ih} \pi_2 + V_{ih}\pi_3 +v_{ihj}\]
+And the first stage is: 
+\[INSURANCE_{ih} = \delta_0 + \delta_1 LOTTERY_{h} + X_{ih} \delta_2 + V_{ih}\delta_3 +\mu_{ihj}\]
+And the reduced form and intent to treat effect is:
+\[y_{ihj} = \beta_0 + \beta_1 LOTTERY_h + X_{ih} \beta_2 + V_{ih}\beta_3 +\epsilon_{ihj}\]
+The authors use "Ever on Medicaid" as the endogenous variable, but other measures of insurance such as "the number of months on medicaid", and "on medicaid at the end of our study" are also useful in that the former may be more appropriate for modeling outcomes where the effect of insurance on outcomes is linear in the duration insured, and the latter provides an insightful lower bound on the first stage.
+
+
+
+\item[(b)] Why do Finkelstein et al. include controls in equation (1)?
+\newline
+\newline
+\textit{Solution.}\newline
+    The controls in $X$ are correlated with treatment and must be controlled for in order to achieve randomness and get an unbiased estimate, as the identifying assumption of RCT requires. The controls in $V$ are included for increased precision. 
+
+\item[(c)]What is the first stage estimate for ever on Medicaid? Interpret the estimate. Why is it less than one?
+\newline
+\newline
+\textit{Solution.}\newline
+    The results show a first stage of 0.26 for the full sample and credit-report subsample and a first stage of 0.29 for the survey respondents. This implies that winning the lottery increases the chance of a household enrolling in medicaid by 30\%. The coefficient is less than 1 because of the 30% take-up of those that won the lottery. No one in the control group enrolled in medicaid, but not all in the treatment did either, giving the cefficient a value below 0. 
+
+\item[(d)] Describe who the complier population is for this local average treatment effect. How generalizable is this particular LATE is to the effect of Medicaid on other populations (e.g., children and pregnant women)? How generalizable is this LATE to the effect of the Medicaid expansions under the Affordable Care Act?
+\newline
+\newline
+\textit{Solution.} \newline
+    The compiler population is somewhat older white people who are worse in health than average. Thus, the results of this paper are hard to generalize, as children are much younger than the complier population observed here, while pregnant women would possibly be in better health given their pregnancy, again deviating from the complier population described here. Medicaid expansions under the ACA mainly increased coverage of non-white minorities, and the age range that saw the largest increase in coverage was 19-34 as seen \textcolor{blue}{\href{https://www.urban.org/sites/default/files/publication/86761/2001041-who-gained-health-insurance-coverage-under-the-aca-and-where-do-they-live.pdf}{here}}. Thus, the effects of this study also seem difficult to generalize to expansions under the ACA. 
+
+\end{enumerate}
+
+\hypertarget{question-4.}{%
+\section{Question 4.}\label{question-4.}}
+
+This question asks you to consider the results of this paper, plus the
+results of the Oregon Health Insurance Experiment more generally.
+
+\begin{enumerate}
+
+\item[(a)] Summarize this paper’s results on the effect of Medicaid on
+\begin{enumerate}
+
+\item[i.] Health care utilization
+\newline
+\newline
+\textit{Solution.}\newline
+    Medicaid increased emergency care by 40\%, outpatient office visits by 55\%, prescription drug use by 15\%, non-emergency department hospitalizations, and diabetes and depression diagnoses. In sum, Medicaid increased health care utilization for almost all variables measured save ER use. 
+
+\item[ii.] Financial strain
+\newline
+\newline
+\textit{Solution.}\newline
+    The average standardized treatment effect suggests no evidence of a decline in bankruptcy, lien, judgment, collection, or delinquency. However, self reported surveys show that Medicaid eliminated out of pocket catastrophic expenditures by 35\% and reduced probability of having to borrow money or skip paying other bills because of medical expenses by more than 40\%. Credit reports tell a similar story, as Medicaid decreased probability of having unpaid medical bill sent to collection agency by 25\%. 
+
+\item[iii.] Health
+\newline
+\newline
+\textit{Solution.}\newline
+    Medicaid improved self-reported health and reduced depression. There is a 32\% increase in self-reported overall happiness, and rates of depression dropped by 30\%. The effects on phsyical health, on the other hand, were not statistically significant, even among higher risk groups. 
+
+\end{enumerate}
+
+\item[(b)] The Oregon Health Insurance Experiment has received extensive media coverage. In 2011, an NPR headline read “Medicaid Makes ’Big Difference’ in Lives, Study Finds.” In 2013, a Washington Post headline read “Spending on Medicaid doesn’t actually help the poor.” These headlines seem contradictory. Given the results of this paper and the other OHIE papers we summarized in class, which of these headlines do you think is correct and why?
+\newline
+\newline
+\textit{Solution.}\newline
+    Although the effects of medicare can vary widely between complier populations, this paper and others seem to support the notion that Medicaid does improve the lives of lower socioeconomic individuals. From this paper alone, we find that Medicaid has benefits on mental health, hospital utilization, and consumption smoothing. Medicaid might not contribute, at least from this study, to physical health, but that does not mean that it does not significantly improve the lives of the poor. The 32\% increase in self-reported overall happiness documented in this paper should be sufficient in dismissing that notion. Some argue that bankruptcy essentially acts as a standin for Medicaid among low income individuals, but even then, funding for Medicaid is being used to fund hospitals treating low income uninsured individuals who are not formal recipients of medicaid. Pooling all of these effects, not to mention the benefits of being relieved from debt and bankruptcy with the help of medicaid, it is safe to say that Medicaid does make a big difference in people's lives. 
+
+\end{enumerate}
+
+\hypertarget{question-5.}{%
+\section{Question 5.}\label{question-5.}}
+
+\hypertarget{a.}{%
+\subsection{a.}\label{a.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{raw_df <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"pset_experiment_data.csv.crdownload"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{b.}{%
+\subsection{b.}\label{b.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df <-}\StringTok{ }\NormalTok{raw_df}
+\CommentTok{# coding binary variables }
+\NormalTok{df[df}\OperatorTok{==}\StringTok{""}\NormalTok{] <-}\StringTok{ }\OtherTok{NA}
+\NormalTok{df}\OperatorTok{$}\NormalTok{treatment <-}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(df}\OperatorTok{$}\NormalTok{treatment }\OperatorTok{==}\StringTok{ "Selected"}\NormalTok{, }\DataTypeTok{na.rm =}\NormalTok{ T)}
+\NormalTok{df}\OperatorTok{$}\NormalTok{returned_12m <-}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(df}\OperatorTok{$}\NormalTok{returned_12m }\OperatorTok{==}\StringTok{ "Yes"}\NormalTok{, }\DataTypeTok{na.rm=}\NormalTok{T)}
+\NormalTok{df}\OperatorTok{$}\NormalTok{ohp_all_ever_survey <-}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(df}\OperatorTok{$}\NormalTok{ohp_all_ever_survey }\OperatorTok{==}\StringTok{ "Enrolled"}\NormalTok{, }\DataTypeTok{na.rm =}\NormalTok{ T)}
+\NormalTok{df}\OperatorTok{$}\NormalTok{ohp_all_mo_survey <-}\StringTok{ }\KeywordTok{as.integer}\NormalTok{(}\KeywordTok{str_remove}\NormalTok{(df}\OperatorTok{$}\NormalTok{ohp_all_mo_survey, }\StringTok{" months|month"}\NormalTok{), }\DataTypeTok{na.rm =}\NormalTok{ T)}
+\NormalTok{X <-}\StringTok{ }\KeywordTok{names}\NormalTok{(df)[}\KeywordTok{grep}\NormalTok{(}\StringTok{"ddd"}\NormalTok{, }\KeywordTok{names}\NormalTok{(df))]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{avg_treatment <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(df[df}\OperatorTok{$}\NormalTok{treatment }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{,]}\OperatorTok{$}\NormalTok{returned_12m, }\DataTypeTok{na.rm =}\NormalTok{ T)}
+\NormalTok{avg_control <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(df[df}\OperatorTok{$}\NormalTok{treatment }\OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{,]}\OperatorTok{$}\NormalTok{returned_12m, }\DataTypeTok{na.rm =}\NormalTok{ T)}
+\CommentTok{# Testing for difference in response rate}
+\NormalTok{response_rate <-}\StringTok{ }\NormalTok{df }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(treatment }\OperatorTok{==}\StringTok{ }\DecValTok{1} \OperatorTok{|}\StringTok{ }\NormalTok{treatment }\OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(treatment, returned_12m)}
+\NormalTok{res <-}\StringTok{ }\KeywordTok{t.test}\NormalTok{(returned_12m }\OperatorTok{~}\StringTok{ }\NormalTok{treatment, }\DataTypeTok{data =}\NormalTok{ df)}
+\KeywordTok{cat}\NormalTok{(}\StringTok{"Average 12 month survey response rate for treatment:"}\NormalTok{, avg_treatment, }
+    \StringTok{"}\CharTok{\textbackslash{}n}\StringTok{Average 12 month survey response rate for control:"}\NormalTok{, avg_control,}
+    \StringTok{"}\CharTok{\textbackslash{}n}\StringTok{Difference:"}\NormalTok{, }\KeywordTok{abs}\NormalTok{(avg_treatment }\OperatorTok{-}\StringTok{ }\NormalTok{avg_control))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Average 12 month survey response rate for treatment: 0.3991686 
+## Average 12 month survey response rate for control: 0.4152554 
+## Difference: 0.0160868
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{res}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  returned_12m by treatment
+## t = 3.9564, df = 58341, p-value = 7.618e-05
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  0.008117376 0.024056231
+## sample estimates:
+## mean in group 0 mean in group 1 
+##       0.4152554       0.3991686
+\end{verbatim}
+
+From the above results, there seems to be a statistically significant
+difference in the means of the treatment and control groups, but very
+small and trivial.
+
+\hypertarget{c.}{%
+\subsection{c.~}\label{c.}}
+
+\hypertarget{i.}{%
+\subsubsection{i.}\label{i.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{full_df <-}\StringTok{ }\NormalTok{df[}\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(df}\OperatorTok{$}\NormalTok{weight_12m), ]}
+\NormalTok{sub_df <-}\StringTok{ }\NormalTok{df[df}\OperatorTok{$}\NormalTok{sample_12m_resp }\OperatorTok{==}\StringTok{ "12m mail survey responder"}\NormalTok{, ]}
+\NormalTok{sub_df <-}\StringTok{ }\NormalTok{sub_df[}\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(sub_df}\OperatorTok{$}\NormalTok{weight_12m), ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# A}
+\CommentTok{# Full sample}
+\NormalTok{ever_lottery <-}\StringTok{ }\KeywordTok{felm}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"ohp_all_ever_survey"}\NormalTok{, }
+                            \StringTok{"~ treatment +"}\NormalTok{, }\KeywordTok{paste}\NormalTok{(X, }\DataTypeTok{collapse =} \StringTok{"+"}\NormalTok{),}
+                            \StringTok{"|0|0|household_id"}\NormalTok{)), }\DataTypeTok{data =}\NormalTok{ full_df, }
+                            \DataTypeTok{weights =}\NormalTok{ full_df}\OperatorTok{$}\NormalTok{weight_12m)}
+\CommentTok{# survey respondents}
+\NormalTok{ever_lottery_sub <-}\StringTok{ }\KeywordTok{felm}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"ohp_all_ever_survey"}\NormalTok{, }
+                            \StringTok{"~ treatment +"}\NormalTok{, }\KeywordTok{paste}\NormalTok{(X, }\DataTypeTok{collapse =} \StringTok{"+"}\NormalTok{),}
+                            \StringTok{"|0|0|household_id"}\NormalTok{)), }\DataTypeTok{data =}\NormalTok{ sub_df, }
+                            \DataTypeTok{weights =}\NormalTok{ sub_df}\OperatorTok{$}\NormalTok{weight_12m)}
+
+\CommentTok{# B }
+\NormalTok{months_lottery <-}\StringTok{ }\KeywordTok{felm}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"ohp_all_mo_survey"}\NormalTok{, }
+                            \StringTok{"~ treatment +"}\NormalTok{, }\KeywordTok{paste}\NormalTok{(X, }\DataTypeTok{collapse =} \StringTok{"+"}\NormalTok{),}
+                            \StringTok{"|0|0|household_id"}\NormalTok{)), }\DataTypeTok{data =}\NormalTok{ full_df, }
+                            \DataTypeTok{weights =}\NormalTok{ full_df}\OperatorTok{$}\NormalTok{weight_12m)}
+\NormalTok{months_lottery_sub <-}\StringTok{ }\KeywordTok{felm}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"ohp_all_mo_survey"}\NormalTok{, }
+                            \StringTok{"~ treatment +"}\NormalTok{, }\KeywordTok{paste}\NormalTok{(X, }\DataTypeTok{collapse =} \StringTok{"+"}\NormalTok{),}
+                            \StringTok{"|0|0|household_id"}\NormalTok{)), }\DataTypeTok{data =}\NormalTok{ sub_df, }
+                            \DataTypeTok{weights =}\NormalTok{ sub_df}\OperatorTok{$}\NormalTok{weight_12m)}
+\CommentTok{# C }
+\NormalTok{end_lottery <-}\StringTok{ }\KeywordTok{felm}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"ohp_all_end_survey"}\NormalTok{, }
+                            \StringTok{"~ treatment +"}\NormalTok{, }\KeywordTok{paste}\NormalTok{(X, }\DataTypeTok{collapse =} \StringTok{"+"}\NormalTok{),}
+                            \StringTok{"|0|0|household_id"}\NormalTok{)), }\DataTypeTok{data =}\NormalTok{ full_df, }
+                            \DataTypeTok{weights =}\NormalTok{ full_df}\OperatorTok{$}\NormalTok{weight_12m)}
+\NormalTok{end_lottery_sub <-}\StringTok{ }\KeywordTok{felm}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"ohp_all_end_survey"}\NormalTok{, }
+                            \StringTok{"~ treatment +"}\NormalTok{, }\KeywordTok{paste}\NormalTok{(X, }\DataTypeTok{collapse =} \StringTok{"+"}\NormalTok{),}
+                            \StringTok{"|0|0|household_id"}\NormalTok{)), }\DataTypeTok{data =}\NormalTok{ sub_df, }
+                            \DataTypeTok{weights =}\NormalTok{ sub_df}\OperatorTok{$}\NormalTok{weight_12m)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ii.}{%
+\subsubsection{ii.}\label{ii.}}
+
+\begin{sidewaystable}[!htbp] \centering 
+  \caption{First Stage Results} 
+  \label{} 
+\small 
+\begin{tabular}{@{\extracolsep{3pt}}lD{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} } 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{6}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-7} 
+\\[-1.8ex] & \multicolumn{2}{c}{Ever on Medicaid} & \multicolumn{2}{c}{Num of Months on Medicaid} & \multicolumn{2}{c}{On Medicaid, end of study period} \\ 
+ & \multicolumn{1}{c}{Full Sample} & \multicolumn{1}{c}{Survey Respondents} & \multicolumn{1}{c}{Full Sample} & \multicolumn{1}{c}{Survey Respondents} & \multicolumn{1}{c}{Full Sample} & \multicolumn{1}{c}{Survey Respondents} \\ 
+\\[-1.8ex] & \multicolumn{1}{c}{(1)} & \multicolumn{1}{c}{(2)} & \multicolumn{1}{c}{(3)} & \multicolumn{1}{c}{(4)} & \multicolumn{1}{c}{(5)} & \multicolumn{1}{c}{(6)}\\ 
+\hline \\[-1.8ex] 
+ treatment & 0.255^{***} & 0.290^{***} & 3.293^{***} & 3.943^{***} & 0.148^{***} & 0.189^{***} \\ 
+  & (0.006) & (0.007) & (0.072) & (0.090) & (0.005) & (0.006) \\ 
+  Constant & 0.188^{***} & 0.209^{***} & 2.430^{***} & 2.914^{***} & 0.114^{***} & 0.138^{***} \\ 
+  & (0.010) & (0.013) & (0.148) & (0.185) & (0.009) & (0.012) \\ 
+ \hline \\[-1.8ex] 
+fixed effects & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} \\ 
+\hline \\[-1.8ex] 
+Observations & \multicolumn{1}{c}{58,405} & \multicolumn{1}{c}{23,741} & \multicolumn{1}{c}{58,405} & \multicolumn{1}{c}{23,741} & \multicolumn{1}{c}{58,405} & \multicolumn{1}{c}{23,741} \\ 
+R$^{2}$ & \multicolumn{1}{c}{0.086} & \multicolumn{1}{c}{0.110} & \multicolumn{1}{c}{0.085} & \multicolumn{1}{c}{0.112} & \multicolumn{1}{c}{0.038} & \multicolumn{1}{c}{0.058} \\ 
+Adjusted R$^{2}$ & \multicolumn{1}{c}{0.086} & \multicolumn{1}{c}{0.109} & \multicolumn{1}{c}{0.084} & \multicolumn{1}{c}{0.111} & \multicolumn{1}{c}{0.038} & \multicolumn{1}{c}{0.057} \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{6}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{sidewaystable}
+
+\newpage
+
+\hypertarget{d.}{%
+\subsection{d.~}\label{d.}}
+
+\hypertarget{i.-1}{%
+\subsubsection{i.}\label{i.-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# creating variables}
+\NormalTok{full_df}\OperatorTok{$}\NormalTok{rx_any_12m <-}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(full_df}\OperatorTok{$}\NormalTok{rx_any_12m }\OperatorTok{==}\StringTok{ "Yes"}\NormalTok{, }\DataTypeTok{na.rm =}\NormalTok{ T)}
+\NormalTok{full_df}\OperatorTok{$}\NormalTok{doc_any_12m <-}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(full_df}\OperatorTok{$}\NormalTok{doc_any_12m }\OperatorTok{==}\StringTok{ "Yes"}\NormalTok{, }\DataTypeTok{na.rm =}\NormalTok{ T)}
+\NormalTok{full_df}\OperatorTok{$}\NormalTok{er_any_12m <-}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(full_df}\OperatorTok{$}\NormalTok{er_any_12m }\OperatorTok{==}\StringTok{ "Yes"}\NormalTok{, }\DataTypeTok{na.rm =}\NormalTok{ T)}
+\NormalTok{full_df}\OperatorTok{$}\NormalTok{hosp_any_12m <-}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(full_df}\OperatorTok{$}\NormalTok{hosp_any_12m }\OperatorTok{==}\StringTok{ "Yes"}\NormalTok{, }\DataTypeTok{na.rm =}\NormalTok{ T)}
+\NormalTok{full_df}\OperatorTok{$}\NormalTok{cost_any_oop_12m <-}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(full_df}\OperatorTok{$}\NormalTok{cost_any_oop_12m }\OperatorTok{==}\StringTok{ "Yes"}\NormalTok{, }\DataTypeTok{na.rm =}\NormalTok{ T)}
+\NormalTok{full_df}\OperatorTok{$}\NormalTok{cost_any_owe_12m <-}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(full_df}\OperatorTok{$}\NormalTok{cost_any_owe_12m }\OperatorTok{==}\StringTok{ "Yes"}\NormalTok{, }\DataTypeTok{na.rm =}\NormalTok{ T)}
+\CommentTok{#full_df$health_notpoor_12m <- as.numeric(full_df$health_notpoor_12m == "Yes", na.rm = T)}
+\CommentTok{#full_df$notbaddays_tot_12m <- as.numeric(full_df$notbaddays_tot_12m == "Yes", na.rm = T)}
+
+\NormalTok{sub_df <-}\StringTok{ }\NormalTok{full_df[full_df}\OperatorTok{$}\NormalTok{sample_12m_resp }\OperatorTok{==}\StringTok{ "12m mail survey responder"}\NormalTok{, ]}
+\NormalTok{sub_df <-}\StringTok{ }\NormalTok{sub_df[}\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(sub_df}\OperatorTok{$}\NormalTok{weight_12m), ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# A}
+\CommentTok{# survey respondents}
+\NormalTok{prescription.sub <-}\StringTok{ }\KeywordTok{felm}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"rx_any_12m ~ "}\NormalTok{, }
+                         \KeywordTok{paste}\NormalTok{(X, }\DataTypeTok{collapse =} \StringTok{" + "}\NormalTok{),}
+                         \StringTok{"| 0 | (ohp_all_ever_survey"}\NormalTok{, }
+                         \StringTok{"~ treatment)"}\NormalTok{,}
+                         \StringTok{" | household_id"}\NormalTok{)), }\DataTypeTok{data =}\NormalTok{ sub_df, }
+                         \DataTypeTok{weights =}\NormalTok{ sub_df}\OperatorTok{$}\NormalTok{weight_12m)}
+\CommentTok{# B}
+\CommentTok{# survey respondents}
+\NormalTok{primary.care.sub <-}\StringTok{ }\KeywordTok{felm}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"doc_any_12m ~ "}\NormalTok{, }
+                         \KeywordTok{paste}\NormalTok{(X, }\DataTypeTok{collapse =} \StringTok{" + "}\NormalTok{),}
+                         \StringTok{"| 0 | (ohp_all_ever_survey"}\NormalTok{, }
+                         \StringTok{"~ treatment)"}\NormalTok{,}
+                         \StringTok{" | household_id"}\NormalTok{)), }\DataTypeTok{data =}\NormalTok{ sub_df, }
+                         \DataTypeTok{weights =}\NormalTok{ sub_df}\OperatorTok{$}\NormalTok{weight_12m)}
+\CommentTok{# C}
+\CommentTok{# survey respondents}
+\NormalTok{ER.visits.sub <-}\StringTok{ }\KeywordTok{felm}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"er_any_12m ~ "}\NormalTok{, }
+                       \KeywordTok{paste}\NormalTok{(X, }\DataTypeTok{collapse =} \StringTok{" + "}\NormalTok{),}
+                       \StringTok{"| 0 | (ohp_all_ever_survey"}\NormalTok{, }
+                       \StringTok{"~ treatment)"}\NormalTok{,}
+                       \StringTok{" | household_id"}\NormalTok{)), }\DataTypeTok{data =}\NormalTok{ sub_df, }
+                       \DataTypeTok{weights =}\NormalTok{ sub_df}\OperatorTok{$}\NormalTok{weight_12m)}
+\CommentTok{# D}
+\CommentTok{# survey respondents}
+\NormalTok{hosp.visits.sub <-}\StringTok{ }\KeywordTok{felm}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"hosp_any_12m ~ "}\NormalTok{, }
+                     \KeywordTok{paste}\NormalTok{(X, }\DataTypeTok{collapse =} \StringTok{" + "}\NormalTok{),}
+                     \StringTok{"| 0 | (ohp_all_ever_survey"}\NormalTok{, }
+                     \StringTok{"~ treatment)"}\NormalTok{,}
+                     \StringTok{" | household_id"}\NormalTok{)), }\DataTypeTok{data =}\NormalTok{ sub_df, }
+                     \DataTypeTok{weights =}\NormalTok{ sub_df}\OperatorTok{$}\NormalTok{weight_12m)}
+\CommentTok{# E}
+\CommentTok{# survey respondents}
+\NormalTok{oop.cost.sub <-}\StringTok{ }\KeywordTok{felm}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"cost_any_oop_12m ~ "}\NormalTok{, }
+                         \KeywordTok{paste}\NormalTok{(X, }\DataTypeTok{collapse =} \StringTok{" + "}\NormalTok{),}
+                         \StringTok{"| 0 | (ohp_all_ever_survey"}\NormalTok{, }
+                         \StringTok{"~ treatment)"}\NormalTok{,}
+                         \StringTok{" | household_id"}\NormalTok{)), }\DataTypeTok{data =}\NormalTok{ sub_df, }
+                         \DataTypeTok{weights =}\NormalTok{ sub_df}\OperatorTok{$}\NormalTok{weight_12m)}
+\CommentTok{# F}
+\CommentTok{# survey respondents}
+\NormalTok{owe.medexp.sub <-}\StringTok{ }\KeywordTok{felm}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"cost_any_owe_12m ~ "}\NormalTok{, }
+                         \KeywordTok{paste}\NormalTok{(X, }\DataTypeTok{collapse =} \StringTok{" + "}\NormalTok{),}
+                         \StringTok{"| 0 | (ohp_all_ever_survey"}\NormalTok{, }
+                         \StringTok{"~ treatment)"}\NormalTok{,}
+                         \StringTok{" | household_id"}\NormalTok{)), }\DataTypeTok{data =}\NormalTok{ sub_df, }
+                         \DataTypeTok{weights =}\NormalTok{ sub_df}\OperatorTok{$}\NormalTok{weight_12m)}
+\CommentTok{# G}
+\CommentTok{# survey respondents}
+\NormalTok{health.good.sub <-}\StringTok{ }\KeywordTok{felm}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"health_notpoor_12m ~ "}\NormalTok{, }
+                         \KeywordTok{paste}\NormalTok{(X, }\DataTypeTok{collapse =} \StringTok{" + "}\NormalTok{),}
+                         \StringTok{"| 0 | (ohp_all_ever_survey"}\NormalTok{, }
+                         \StringTok{"~ treatment)"}\NormalTok{,}
+                         \StringTok{" | household_id"}\NormalTok{)), }\DataTypeTok{data =}\NormalTok{ sub_df, }
+                         \DataTypeTok{weights =}\NormalTok{ sub_df}\OperatorTok{$}\NormalTok{weight_12m)}
+\CommentTok{# H}
+\CommentTok{# survey respondents}
+\NormalTok{not.bad.days.sub <-}\StringTok{ }\KeywordTok{felm}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"notbaddays_tot_12m ~ "}\NormalTok{, }
+                         \KeywordTok{paste}\NormalTok{(X, }\DataTypeTok{collapse =} \StringTok{" + "}\NormalTok{),}
+                         \StringTok{"| 0 | (ohp_all_ever_survey"}\NormalTok{, }
+                         \StringTok{"~ treatment)"}\NormalTok{,}
+                         \StringTok{" | household_id"}\NormalTok{)), }\DataTypeTok{data =}\NormalTok{ sub_df, }
+                         \DataTypeTok{weights =}\NormalTok{ sub_df}\OperatorTok{$}\NormalTok{weight_12m)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ii.-1}{%
+\subsubsection{ii.}\label{ii.-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# A}
+\CommentTok{# survey respondents}
+\NormalTok{prescription.ols <-}\StringTok{ }\KeywordTok{felm}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"rx_any_12m"}\NormalTok{, }
+                            \StringTok{"~ treatment +"}\NormalTok{, }\KeywordTok{paste}\NormalTok{(X, }\DataTypeTok{collapse =} \StringTok{"+"}\NormalTok{),}
+                            \StringTok{"|0|0|household_id"}\NormalTok{)), }\DataTypeTok{data =}\NormalTok{ sub_df, }
+                            \DataTypeTok{weights =}\NormalTok{ sub_df}\OperatorTok{$}\NormalTok{weight_12m)}
+
+\CommentTok{# B }
+\NormalTok{primary.care.ols <-}\StringTok{ }\KeywordTok{felm}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"doc_any_12m ~ "}\NormalTok{,  }
+                            \StringTok{"treatment +"}\NormalTok{, }\KeywordTok{paste}\NormalTok{(X, }\DataTypeTok{collapse =} \StringTok{"+"}\NormalTok{),}
+                            \StringTok{"|0|0|household_id"}\NormalTok{)), }\DataTypeTok{data =}\NormalTok{ sub_df, }
+                            \DataTypeTok{weights =}\NormalTok{ sub_df}\OperatorTok{$}\NormalTok{weight_12m)}
+\CommentTok{# C }
+\NormalTok{ER.visits.ols <-}\StringTok{ }\KeywordTok{felm}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"er_any_12m ~ "}\NormalTok{, }
+                            \StringTok{"treatment +"}\NormalTok{, }\KeywordTok{paste}\NormalTok{(X, }\DataTypeTok{collapse =} \StringTok{"+"}\NormalTok{),}
+                            \StringTok{"|0|0|household_id"}\NormalTok{)), }\DataTypeTok{data =}\NormalTok{ sub_df, }
+                            \DataTypeTok{weights =}\NormalTok{ sub_df}\OperatorTok{$}\NormalTok{weight_12m)}
+\CommentTok{# D }
+\NormalTok{hosp.visits.ols <-}\StringTok{ }\KeywordTok{felm}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"hosp_any_12m ~ "}\NormalTok{, }
+                            \StringTok{"treatment +"}\NormalTok{, }\KeywordTok{paste}\NormalTok{(X, }\DataTypeTok{collapse =} \StringTok{"+"}\NormalTok{),}
+                            \StringTok{"|0|0|household_id"}\NormalTok{)), }\DataTypeTok{data =}\NormalTok{ sub_df, }
+                            \DataTypeTok{weights =}\NormalTok{ sub_df}\OperatorTok{$}\NormalTok{weight_12m)}
+\CommentTok{# E }
+\NormalTok{oop.cost.ols <-}\StringTok{ }\KeywordTok{felm}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"cost_any_oop_12m ~ "}\NormalTok{, }
+                            \StringTok{"treatment +"}\NormalTok{, }\KeywordTok{paste}\NormalTok{(X, }\DataTypeTok{collapse =} \StringTok{"+"}\NormalTok{),}
+                            \StringTok{"|0|0|household_id"}\NormalTok{)), }\DataTypeTok{data =}\NormalTok{ sub_df, }
+                            \DataTypeTok{weights =}\NormalTok{ sub_df}\OperatorTok{$}\NormalTok{weight_12m)}
+\CommentTok{# F }
+\NormalTok{owe.medexp.ols <-}\StringTok{ }\KeywordTok{felm}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"cost_any_owe_12m ~ "}\NormalTok{,}
+                            \StringTok{"treatment +"}\NormalTok{, }\KeywordTok{paste}\NormalTok{(X, }\DataTypeTok{collapse =} \StringTok{"+"}\NormalTok{),}
+                            \StringTok{"|0|0|household_id"}\NormalTok{)), }\DataTypeTok{data =}\NormalTok{ sub_df, }
+                            \DataTypeTok{weights =}\NormalTok{ sub_df}\OperatorTok{$}\NormalTok{weight_12m)}
+\CommentTok{# G }
+\NormalTok{health.good.ols <-}\StringTok{ }\KeywordTok{felm}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"health_notpoor_12m ~ "}\NormalTok{, }
+                            \StringTok{"treatment +"}\NormalTok{, }\KeywordTok{paste}\NormalTok{(X, }\DataTypeTok{collapse =} \StringTok{"+"}\NormalTok{),}
+                            \StringTok{"|0|0|household_id"}\NormalTok{)), }\DataTypeTok{data =}\NormalTok{ sub_df, }
+                            \DataTypeTok{weights =}\NormalTok{ sub_df}\OperatorTok{$}\NormalTok{weight_12m)}
+\CommentTok{# H }
+\NormalTok{not.bad.days.ols <-}\StringTok{ }\KeywordTok{felm}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"notbaddays_tot_12m ~ "}\NormalTok{, }
+                            \StringTok{"treatment +"}\NormalTok{, }\KeywordTok{paste}\NormalTok{(X, }\DataTypeTok{collapse =} \StringTok{"+"}\NormalTok{),}
+                            \StringTok{"|0|0|household_id"}\NormalTok{)), }\DataTypeTok{data =}\NormalTok{ sub_df, }
+                            \DataTypeTok{weights =}\NormalTok{ sub_df}\OperatorTok{$}\NormalTok{weight_12m)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{iii.}{%
+\subsubsection{iii.}\label{iii.}}
+
+2SLS rsults reported in Table 2, ITT results reported in Table 3.
+
+\hypertarget{iv.}{%
+\subsubsection{iv.}\label{iv.}}
+
+The coefficient on insurance from IV estimation of equation (3) can be
+interpreted as a local average treatment effect of insurance, or the
+causal impact of insurance among the compliers who would usually not
+obtain insurance.
+
+The coefficient on the lottery dummy gives the average difference in
+means between the treated and control groups, or the impact of expanded
+\emph{access to health care} on various outcome variables.
+
+\begin{sidewaystable}[!htbp] \centering 
+  \caption{2SLS Results} 
+  \label{} 
+\small 
+\begin{tabular}{@{\extracolsep{0pt}}lD{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} } 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{8}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-9} 
+\\[-1.8ex] & \multicolumn{1}{c}{Prescription} & \multicolumn{1}{c}{Primary Care} & \multicolumn{1}{c}{ER visits} & \multicolumn{1}{c}{Hospital visits} & \multicolumn{1}{c}{Out of Pocket Costs} & \multicolumn{1}{c}{Owe Expenses} & \multicolumn{1}{c}{Health not bad} & \multicolumn{1}{c}{Not Bad Days} \\ 
+\\[-1.8ex] & \multicolumn{1}{c}{(1)} & \multicolumn{1}{c}{(2)} & \multicolumn{1}{c}{(3)} & \multicolumn{1}{c}{(4)} & \multicolumn{1}{c}{(5)} & \multicolumn{1}{c}{(6)} & \multicolumn{1}{c}{(7)} & \multicolumn{1}{c}{(8)}\\ 
+\hline \\[-1.8ex] 
+ LATE & 0.088^{***} & 0.212^{***} & 0.022 & 0.008 & -0.200^{***} & -0.180^{***} & 0.099^{***} & 1.317^{**} \\ 
+  & (0.029) & (0.025) & (0.023) & (0.014) & (0.026) & (0.026) & (0.018) & (0.563) \\ 
+  Constant & 0.623^{***} & 0.555^{***} & 0.267^{***} & 0.080^{***} & 0.597^{***} & 0.645^{***} & 0.837^{***} & 20.736^{***} \\ 
+  & (0.019) & (0.016) & (0.015) & (0.009) & (0.017) & (0.017) & (0.011) & (0.360) \\ 
+ \hline \\[-1.8ex] 
+fixed effects & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} \\ 
+\hline \\[-1.8ex] 
+Observations & \multicolumn{1}{c}{18,308} & \multicolumn{1}{c}{23,492} & \multicolumn{1}{c}{23,514} & \multicolumn{1}{c}{23,573} & \multicolumn{1}{c}{23,426} & \multicolumn{1}{c}{23,451} & \multicolumn{1}{c}{23,361} & \multicolumn{1}{c}{21,881} \\ 
+R$^{2}$ & \multicolumn{1}{c}{0.028} & \multicolumn{1}{c}{0.036} & \multicolumn{1}{c}{0.010} & \multicolumn{1}{c}{0.006} & \multicolumn{1}{c}{0.014} & \multicolumn{1}{c}{-0.006} & \multicolumn{1}{c}{-0.019} & \multicolumn{1}{c}{0.001} \\ 
+Adjusted R$^{2}$ & \multicolumn{1}{c}{0.027} & \multicolumn{1}{c}{0.035} & \multicolumn{1}{c}{0.009} & \multicolumn{1}{c}{0.005} & \multicolumn{1}{c}{0.013} & \multicolumn{1}{c}{-0.007} & \multicolumn{1}{c}{-0.020} & \multicolumn{1}{c}{-0.0002} \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{8}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{sidewaystable}
+
+\begin{sidewaystable}[!htbp] \centering 
+  \caption{ITT:OLS} 
+  \label{} 
+\small 
+\begin{tabular}{@{\extracolsep{0pt}}lD{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} } 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{8}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-9} 
+\\[-1.8ex] & \multicolumn{1}{c}{Prescription} & \multicolumn{1}{c}{Primary Care} & \multicolumn{1}{c}{ER visits} & \multicolumn{1}{c}{Hospital visits} & \multicolumn{1}{c}{Out of Pocket Costs} & \multicolumn{1}{c}{Owe Expenses} & \multicolumn{1}{c}{Health not bad} & \multicolumn{1}{c}{Not Bad Days} \\ 
+\\[-1.8ex] & \multicolumn{1}{c}{(1)} & \multicolumn{1}{c}{(2)} & \multicolumn{1}{c}{(3)} & \multicolumn{1}{c}{(4)} & \multicolumn{1}{c}{(5)} & \multicolumn{1}{c}{(6)} & \multicolumn{1}{c}{(7)} & \multicolumn{1}{c}{(8)}\\ 
+\hline \\[-1.8ex] 
+ ITT & 0.025^{***} & 0.062^{***} & 0.006 & 0.002 & -0.058^{***} & -0.052^{***} & 0.029^{***} & 0.381^{**} \\ 
+  & (0.008) & (0.007) & (0.007) & (0.004) & (0.008) & (0.008) & (0.005) & (0.162) \\ 
+  Constant & 0.642^{***} & 0.599^{***} & 0.272^{***} & 0.081^{***} & 0.556^{***} & 0.607^{***} & 0.858^{***} & 21.003^{***} \\ 
+  & (0.016) & (0.014) & (0.013) & (0.008) & (0.014) & (0.014) & (0.009) & (0.307) \\ 
+ \hline \\[-1.8ex] 
+fixed effects & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} \\ 
+\hline \\[-1.8ex] 
+Observations & \multicolumn{1}{c}{18,308} & \multicolumn{1}{c}{23,492} & \multicolumn{1}{c}{23,514} & \multicolumn{1}{c}{23,573} & \multicolumn{1}{c}{23,426} & \multicolumn{1}{c}{23,451} & \multicolumn{1}{c}{23,361} & \multicolumn{1}{c}{21,881} \\ 
+R$^{2}$ & \multicolumn{1}{c}{0.016} & \multicolumn{1}{c}{0.007} & \multicolumn{1}{c}{0.006} & \multicolumn{1}{c}{0.004} & \multicolumn{1}{c}{0.005} & \multicolumn{1}{c}{0.009} & \multicolumn{1}{c}{0.004} & \multicolumn{1}{c}{0.014} \\ 
+Adjusted R$^{2}$ & \multicolumn{1}{c}{0.015} & \multicolumn{1}{c}{0.006} & \multicolumn{1}{c}{0.006} & \multicolumn{1}{c}{0.003} & \multicolumn{1}{c}{0.004} & \multicolumn{1}{c}{0.008} & \multicolumn{1}{c}{0.003} & \multicolumn{1}{c}{0.013} \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{8}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{sidewaystable}
+
+\end{document}

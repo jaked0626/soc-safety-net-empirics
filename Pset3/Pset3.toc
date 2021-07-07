@@ -1,0 +1,38 @@
+\contentsline {section}{1. Screening Theory}{1}{section*.2}%
+\contentsline {subsection}{a.}{2}{section*.3}%
+\contentsline {subsection}{b.}{2}{section*.4}%
+\contentsline {subsection}{c.\nobreakspace {}}{2}{section*.5}%
+\contentsline {subsection}{d.\nobreakspace {}}{2}{section*.6}%
+\contentsline {subsection}{e.}{3}{section*.7}%
+\contentsline {section}{2. Screening; instrumental variables.}{3}{section*.8}%
+\contentsline {subsection}{a.}{3}{section*.9}%
+\contentsline {subsection}{b.}{4}{section*.10}%
+\contentsline {subsection}{c.\nobreakspace {}}{4}{section*.11}%
+\contentsline {subsection}{d.\nobreakspace {}}{6}{section*.12}%
+\contentsline {subsection}{e.}{8}{section*.13}%
+\contentsline {section}{3. Disability as tag; difference-in-differences.}{10}{section*.14}%
+\contentsline {subsection}{a.}{10}{section*.15}%
+\contentsline {subsection}{b.}{10}{section*.16}%
+\contentsline {subsection}{c.\nobreakspace {}}{12}{section*.17}%
+\contentsline {section}{4. Data exercise: difference-in-differences.}{13}{section*.18}%
+\contentsline {subsection}{a.}{13}{section*.19}%
+\contentsline {subsection}{b.}{13}{section*.20}%
+\contentsline {subsection}{c.\nobreakspace {}}{14}{section*.21}%
+\contentsline {subsection}{d.\nobreakspace {}}{14}{section*.22}%
+\contentsline {subsection}{e.}{15}{section*.23}%
+\contentsline {subsection}{f.\nobreakspace {}}{15}{section*.24}%
+\contentsline {subsection}{g.}{15}{section*.25}%
+\contentsline {subsubsection}{i.}{15}{section*.26}%
+\contentsline {paragraph}{A.}{16}{section*.27}%
+\contentsline {paragraph}{B.}{16}{section*.28}%
+\contentsline {paragraph}{C.}{16}{section*.29}%
+\contentsline {subsubsection}{ii.}{16}{section*.30}%
+\contentsline {paragraph}{A.}{16}{section*.31}%
+\contentsline {paragraph}{B.}{17}{section*.32}%
+\contentsline {subsubsection}{iii.}{17}{section*.33}%
+\contentsline {paragraph}{A.}{17}{section*.34}%
+\contentsline {paragraph}{B.}{17}{section*.35}%
+\contentsline {subsubsection}{iv.}{17}{section*.36}%
+\contentsline {subsection}{h.}{18}{section*.37}%
+\contentsline {subsubsection}{i.}{18}{section*.38}%
+\contentsline {subsubsection}{ii.}{21}{section*.39}%
